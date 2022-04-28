@@ -6,6 +6,9 @@ import random
 from images import image_handler
 from sounds import sound_handler
 
+# __init__() are the properties set for the objects
+# def <name> are the methods which can be called in the class or by the object outside the class
+
 class Charachter:
     """this class makes charachters adds hitboxes and draws them on the screen"""
     def __init__(self, WIDTH, HEIGHT, X_axis, Y_axis, IMAGE, window):
@@ -45,7 +48,7 @@ class enemy(Charachter):
         """places enemies in the list on to the screen"""
         return [charachter.draw_charachter(enemy) for enemy in self.enemy_list]
 
-    def enemy_move(self, window_width):
+    def enemy_move(self, window_width, **other_enemy_lists):
         """deals with enemy movement from left to right and below"""
         for enemy in self.enemy_list:
             max_enemy_x = max(sorted(self.enemy_list)).x + self.WIDTH #moves enemy when it touches side of screen (max has WIDHT beacuse enemy x starts from its top left corner so min doesnt need it)
@@ -105,22 +108,26 @@ class projectile(enemy):
             # if laser hits enemy or barrier destroy laser, kill enemy and ad appropriate score to player score
             for enemy in self.lists[0][:]:
                 if laser.colliderect(enemy):
+                    # removes hit enemy from list "killing" it
                     self.lists[0].remove(enemy)
+                    # adds score
                     self.score += 10
+                    # removes laser from list to make it usuable again
                     self.lasers_list.remove(laser)
-                    explosion = Charachter(enemy.width, enemy.height, enemy.x, enemy.y, image_handler.EXPLOSION_PURPLE, self.window).draw_charachter(enemy)
+                    # draws the explosion on enemy hitbox as an after death effect
+                    Charachter(enemy.width, enemy.height, enemy.x, enemy.y, image_handler.EXPLOSION_PURPLE, self.window).draw_charachter(enemy)
             for enemy in self.lists[1][:]:
                 if laser.colliderect(enemy):
                     self.lists[1].remove(enemy)
                     self.score += 10
                     self.lasers_list.remove(laser)
-                    explosion = Charachter(enemy.width, enemy.height, enemy.x, enemy.y, image_handler.EXPLOSION_GREEN, self.window).draw_charachter(enemy)
+                    Charachter(enemy.width, enemy.height, enemy.x, enemy.y, image_handler.EXPLOSION_GREEN, self.window).draw_charachter(enemy)
             for enemy in self.lists[2][:]:
                 if laser.colliderect(enemy):
                     self.lists[2].remove(enemy)
                     self.score += 10
                     self.lasers_list.remove(laser)
-                    explosion = Charachter(enemy.width, enemy.height, enemy.x, enemy.y, image_handler.EXPLOSION_BLUE, self.window).draw_charachter(enemy)
+                    Charachter(enemy.width, enemy.height, enemy.x, enemy.y, image_handler.EXPLOSION_BLUE, self.window).draw_charachter(enemy)
 
     def shoot_lasers(self): #dependent on button press cant work at the same place with handle lasers
         """creates laser hitbox and adds it to a list"""

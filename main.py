@@ -33,7 +33,7 @@ BLUE = pygame.Color(0, 0, 255)
 FPS = 60
 
 # objects/sprites and object attributes
-# images/sounds/fonts gotten from https://github.com/leerob/space-invaders
+# images/sounds/fonts gotten from https://github.com/leerob/space-invaderss
 
 # generating empty list for enemies
 enemy1, enemy2, enemy3 = [], [], []
