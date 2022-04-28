@@ -16,3 +16,6 @@ install requirments ```pip install requirments.txt```
 change file to be executable ```chmod +x /path/to/script/space-invader/mani.py ``` (also do for charachters.py and ensure the path to python on top of both scripts is accurate to where your python compiler is)
 
 run scrip ```./main.py```
+
+
+images gotten from: https://github.com/leerob/space-invaderss
