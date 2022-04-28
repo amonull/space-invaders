@@ -115,6 +115,7 @@ class projectile(enemy):
                     # removes laser from list to make it usuable again
                     self.lasers_list.remove(laser)
                     # draws the explosion on enemy hitbox as an after death effect
+                    # it does it by calling inherited class to create an object again and only uses draw methods to use enemies hitbox to spawn it
                     Charachter(enemy.width, enemy.height, enemy.x, enemy.y, image_handler.EXPLOSION_PURPLE, self.window).draw_charachter(enemy)
             for enemy in self.lists[1][:]:
                 if laser.colliderect(enemy):
