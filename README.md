@@ -5,7 +5,7 @@ this project was made for my colleges event driven programming module
 IMPORTANT:
 as of april 28 2022 this program is not fully complete there are still parts that needs to be made like player win and loss, and bases.
 
-***Installation:***
+**Installation:**
 
 clone this repo ```git clone https://github.com/amonull/space-invaders.git```
 
