@@ -7,7 +7,7 @@ as of april 28 2022 this program is not fully complete there are still parts tha
 
 Installation:
 
-clone this repo
+clone this repo ```git clone https://github.com/amonull/space-invaders.git```
 
 change directory to the repo from your terminal or command prompt/powershell  ```cd /path/to/repo/space-invaders```
 
