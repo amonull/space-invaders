@@ -3,7 +3,9 @@
 this project was made for my colleges event driven programming module
 
 IMPORTANT:
-as of april 28 2022 this program is not fully complete there are still parts that needs to be made like player win and loss, and bases.
+this program uses match-case statements so python must be version 3.10 or above
+
+as of may 15 2022 this program is not fully complete there are still parts that needs to be made like player win and loss, and bases.
 
 **Installation:**
 
