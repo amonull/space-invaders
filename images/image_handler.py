@@ -1,12 +1,14 @@
-#!/usr/bin/python3
+#!/usr/bin/env python
+# ^-- uses this for python env instead of {#!/usr/bin/python} so it is more versitile and can be ran from CLI using a venv with correct modules (i.e. pygame)
 
 import pygame
-import pathlib
+import pathlib # imported to find parent folder
 
+# path of file which this file is on
 file_path = pathlib.Path(__file__).parent.absolute()
 
+# gets images from path and loads them for pygame to use
 SHIP = pygame.image.load(f"{file_path}/ship.png")
-BARRIER = pygame.image.load(f"{file_path}/barrier.png")
 LASER = pygame.image.load(f"{file_path}/laser.png")
 ENEMY_1 = pygame.image.load(f"{file_path}/enemy1_1.png")
 ENEMY_2 = pygame.image.load(f"{file_path}/enemy2_1.png")
@@ -20,4 +22,5 @@ EXPLOSION_GREEN = pygame.image.load(f"{file_path}/explosiongreen.png")
 EXPLOSION_PURPLE = pygame.image.load(f"{file_path}/explosionpurple.png")
 BG_IMG = pygame.image.load(f"{file_path}/background.jpg")
 
-output = lambda IMAGE: pygame.transform.scale(IMAGE, (50, 50))
+output = lambda IMAGE, WIDTH, HEIGHT: pygame.transform.scale(IMAGE, (WIDTH, HEIGHT))
+"""takes the image and adjusts scale to make it fit the screen"""
