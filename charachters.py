@@ -7,7 +7,7 @@ import random # imported to calculate probability
 import sys # imported to correctly exit game
 from images import image_handler
 from sounds import sound_handler
-from fonts import font_handler
+from font import font_handler
 
 # __init__() are the properties set for the objects
 # def <name> are the methods which can be called in the class or by the object outside the class
