@@ -7,8 +7,8 @@
 import pygame
 import sys
 from images import image_handler
-from scores import save_score
-from fonts import font_handler
+from score import save_score
+from font import font_handler
 import charachters
 
 pygame.init() # safely initilizing all pygame modules
