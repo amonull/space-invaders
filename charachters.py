@@ -7,7 +7,7 @@ import random # imported to calculate probability
 import sys # imported to correctly exit game
 from images import image_handler
 from sounds import sound_handler
-from font import font_handler
+from fonts import font_handler
 
 # __init__() are the properties set for the objects
 # def <name> are the methods which can be called in the class or by the object outside the class
@@ -73,12 +73,15 @@ class enemy(Charachter):
         """places enemies in the list on to the screen"""
         def choose_image(var_image):
             """used to choose the correct image for the enemy"""
-            if var_image == "ENEMY_1":
-                return image_handler.ENEMY_1
-            elif var_image == "ENEMY_2":
-                return image_handler.ENEMY_2
-            elif var_image == "ENEMY_3":
-                return image_handler.ENEMY_3
+            # due to match case statement only works in python 3.10 and above
+            match var_image: # using match case statement as in this case it is easier to use than if and elif
+                case "ENEMY_1":
+                    return image_handler.ENEMY_1
+                case "ENEMY_2":
+                    return image_handler.ENEMY_2
+                case "ENEMY_3":
+                    return image_handler.ENEMY_3
+
         # uses 2 loop comprehensions to make it easier to read and shorter to write (loops through first dict (to find keys) and then the lists that are found from the looped keys)
         # dict.items() gets the key and the items while dict.values() gets only the items
         return [[charachter.draw_charachter(enemy, choose_image(key)) for enemy in enemy_lists] for key, enemy_lists in self.enemies.items()]
@@ -128,9 +131,12 @@ class mystery(Charachter):
         self.timer = pygame.time.get_ticks()
 
     def spawn(self, current_time):
-        pass
+        # 25000 = 2 mins 5 secs
+        if (current_time-self.timer) > 25000:
+            pass
+        # IMPORTATN: make sure you reset the timer so it can spawn again
 
-    def score_porabability(self):
+    def score_porabability(self) -> int:
         """determines what score player can get"""
         probability = (0,4)
         # match-case statements are new in python added in 3.10
@@ -148,6 +154,7 @@ class mystery(Charachter):
 
     def __del__(self):
         """ran when object is destroyed"""
+        # run using del {object}
         self.score += self.score_porabability()
         return self.score
 
@@ -166,16 +173,18 @@ class projectile(enemy): # IMPORTANT: the ship laser is not created using Charac
 
     def probability(self, enemy_laser) -> bool:
         """probability counter to determine if ship laser can destroy enemy laser"""
-        if enemy_laser == 'normal_laser': #always returns true
-            return True
-        elif enemy_laser == 'fast_laser': #1/2 chance to return true 
-            chance = random.randint(0,1)
-            if chance == 0:
+
+        match enemy_laser:
+            case 'normal_laser': #always returns true
                 return True
-        elif enemy_laser == 'wiggly_laser': #1/3 chance to return true
-            chance = random.randint(0,2)
-            if chance == 0:
-                return True
+            case 'fast_laser': #1/2 chance to return true
+                chance = random.randint(0,1)
+                if not chance: # checks if value is 0
+                    return True
+            case 'wiggly_laser': #1/3 chance to return true
+                chance = random.randint(0,2)
+                if not chance: #checks if value is 0
+                    return True
 
     def handle_lasers(self, LASER_SPEED, enemy_laser, laser_type, enemy_laser_list):
         """adds laser to screen, deals with its movement, and removes from list when an event occurs"""
@@ -261,12 +270,13 @@ class enemy_lasers(enemy): # the enemy laser is an object in a list and not a si
         """handles everything to do with the laser"""
         def select_image(laser_type):
             """selects the correct image for laser"""
-            if laser_type == "normal_laser":
-                return image_handler.ENEMY_LASER
-            elif laser_type == "fast_laser":
-                return image_handler.ENEMY_FAST_LASER
-            elif laser_type == "wiggly_laser":
-                return image_handler.ENEMY_WIGLLY_LASER
+            match laser_type:
+                case "normal_laser":
+                    return image_handler.ENEMY_LASER
+                case "fast_laser":
+                    return image_handler.ENEMY_FAST_LASER
+                case "wiggly_laser":
+                    return image_handler.ENEMY_WIGLLY_LASER
 
         for laser in self.empty_list:
             laser.y += 2 # moves laser
@@ -299,8 +309,8 @@ class buttons:
             # places the text in the center of the button
             # using the center method i used in menu doesnt work as it misalignes text and button
             self.window.blit(button_text, (self.X_axis + (self.width/2 - button_text.get_width()/2), self.Y_axis + (self.height/2 - button_text.get_height()/2)))
-    def isHower(self) -> bool:
-        """checks if mouse is howering over the button"""
+    def isHover(self) -> bool:
+        """checks if mouse is hovering over the button"""
         mouse_position_x, mouse_position_y = pygame.mouse.get_pos()
         if mouse_position_x > self.X_axis and mouse_position_x < self.X_axis + self.width:
             if mouse_position_y > self.Y_axis and mouse_position_y < self.Y_axis + self.height:
@@ -309,8 +319,7 @@ class buttons:
 
 class menus(buttons):
     """class used to create menus/screens in the game to display things like winning screen or options"""
-    def __init__(self, score, window, font, **colour) -> None:
-        self.score = score
+    def __init__(self, window, font, **colour) -> None:
         self.window = window
         self.font = font
         self.colour = colour
@@ -345,18 +354,18 @@ class menus(buttons):
 
                 # [BUTTON ACTIONS]
                 if event.type == pygame.MOUSEBUTTONDOWN: # checks for mouse button click action
-                    if basic_button1.isHower():
+                    if basic_button1.isHover():
                         func_button1()
-                    if basic_button2.isHower():
+                    if basic_button2.isHover():
                         func_button2()
                 
-                if event.type == pygame.MOUSEMOTION: # checks for mouse button hower action
-                    if basic_button1.isHower():
-                        self.colour['button1_colour'] = (25,16,43) # if howering on top of the button changes the colour to a light purple
+                if event.type == pygame.MOUSEMOTION: # checks for mouse button hover action
+                    if basic_button1.isHover():
+                        self.colour['button1_colour'] = (25,16,43) # if hovering on top of the button changes the colour to a light purple
                     else:
-                        self.colour['button1_colour'] = old_button_colour # this format of changing the colours was choosen as it was the easiest (if not hower changes the colour back to dark purple)
+                        self.colour['button1_colour'] = old_button_colour # this format of changing the colours was choosen as it was the easiest (if not hover changes the colour back to dark purple)
 
-                    if basic_button2.isHower():
+                    if basic_button2.isHover():
                         self.colour['button2_colour'] = (25,16,43)
                     else:
                         self.colour['button2_colour'] = old_button_colour
