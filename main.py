@@ -152,7 +152,7 @@ if __name__ == "__main__":
 
     menu_run = True
     BUTTON_COLOR=DARK_BLUE
-    while menu_run:
+    while menu_run: # start screen is made this way and not with class menus due to this window having to use main function that has parameters. the menus class cannot handle arguments on button functions as of right now
         # creats new background image to overwrite anything underneath
         WINDOW.blit(image_handler.BG_IMG,(0,0))
 
