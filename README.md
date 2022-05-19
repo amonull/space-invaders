@@ -2,7 +2,7 @@
 
 this project is made for my colleges event driven programming module
 
-IMPORTANT:
+**IMPORTANT:**
 
 this program uses match-case statements so python must be version 3.10 or above
 
