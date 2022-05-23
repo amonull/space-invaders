@@ -14,7 +14,7 @@ clone this repo ```git clone https://github.com/amonull/space-invaders.git```
 
 change directory to the repo from your terminal or command prompt/powershell  ```cd /path/to/repo/space-invaders```
 
-install requirments ```pip install requirments.txt```
+install requirments ```pip install -r requirements.txt```
 
 change file to be executable ```chmod +x /path/to/script/space-invader/mani.py ```
 
