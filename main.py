@@ -145,7 +145,6 @@ def main(**sprites):
 if __name__ == "__main__":
     # [OBJECTS]
     SHIP = charachters.Charachter(DEFAULT_WIDTH, DEFAULT_HEIGHT, SHIP_X, SHIP_Y, WINDOW)
-    #BARRIER = charachters.multiple_charachters(barriers, DEFAULT_WIDTH, DEFAULT_HEIGHT, BARRIER_X, BARRIER_Y, image_handler.BARRIER, WINDOW)
 
     ENEMY = charachters.enemy(DEFAULT_WIDTH, DEFAULT_HEIGHT, WINDOW, direction, enemy_blocks, enemy_speed)
     ENEMY.seperator()
