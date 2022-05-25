@@ -21,6 +21,10 @@ change file to be executable ```chmod +x /path/to/script/space-invader/mani.py `
 run scrip ```./main.py```
 
 
+**Notes:**
+```alternative_main.py``` is there if the used doesnt like the main screen
+
+
 **using timer to delay action like enemy movement gotten from: https://github.com/leerob/space-invaderss**
 
 **images, sounds, and font gotten from: https://github.com/leerob/space-invaderss**
