@@ -18,7 +18,7 @@ install requirments ```pip install -r requirements.txt```
 
 change file to be executable ```chmod +x /path/to/script/space-invader/main.py ```
 
-run scrip ```./main.py```
+run script ```./main.py```
 
 
 **Notes:**
