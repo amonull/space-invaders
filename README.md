@@ -16,7 +16,7 @@ change directory to the repo from your terminal or command prompt/powershell  ``
 
 install requirments ```pip install -r requirements.txt```
 
-change file to be executable ```chmod +x /path/to/script/space-invader/mani.py ```
+change file to be executable ```chmod +x /path/to/script/space-invader/main.py ```
 
 run scrip ```./main.py```
 
