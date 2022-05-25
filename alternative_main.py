@@ -4,7 +4,6 @@
 # THE x AND y AXIS ARE HARD CODED
 # ^-- to change the space inbetween enemy to enemy or barrier to barrier the new x axis must be calculated
 
-import webbrowser #to open help guide
 import pathlib
 import pygame
 import sys
