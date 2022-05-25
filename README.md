@@ -21,11 +21,6 @@ change file to be executable ```chmod +x /path/to/script/space-invader/mani.py `
 run scrip ```./main.py```
 
 
-**Notes:**
-
-the ```main.py``` file contains some bugs like starting timer for enemy movements too early and button highlighting not working as it should so consider using ```alternative_main.py``` instead which removes the start screen.
-
-
 **using timer to delay action like enemy movement gotten from: https://github.com/leerob/space-invaderss**
 
 **images, sounds, and font gotten from: https://github.com/leerob/space-invaderss**
