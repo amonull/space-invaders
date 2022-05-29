@@ -18,10 +18,6 @@ parent_path = pathlib.Path(__file__).parent.absolute()
 
 pygame.init() # safely initilizing all pygame modules
 
-# [GENERAL] consts/vars
-score = 0
-hi_score = save_score.read_scores()
-
 # [WINDOW]
 width, height = 800, 600
 WINDOW = pygame.display.set_mode((width, height))
@@ -38,7 +34,9 @@ DARK_BLUE = pygame.Color(10,0,21)
 # defining how many frames per second the game updates at
 FPS = 30
 
-# constants and variables for overall functionality
+# [GENERAL] consts/vars
+score = 0
+hi_score = save_score.read_scores()
 ship_speed = 10
 laser_speed = 30
 enemy_blocks = 10
