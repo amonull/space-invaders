@@ -100,7 +100,7 @@ class enemy(Charachter):
         max_enemy_x = max(sorted(merged_list)).x + DEFAULT_WIDTH
         min_enemy_x = min(sorted(merged_list)).x
 
-        if (current_time-self.timer) > self.enemy_speed: # the timer function is from https://github.com/leerob/space-invaders/blob/master/spaceinvaders.py
+        if (current_time-self.timer) > self.enemy_speed:
         # iterates through dict (gets the list)
             for catagory in self.enemies.values():
                 # iterates through lists
